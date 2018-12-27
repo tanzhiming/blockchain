@@ -8,4 +8,5 @@
 * [使用私有数据](fabric/private-data.md)
 * [链码(开发角色)](fabric/chaincode-for-developers.md)
 * [链码(运维角色)](fabric/chaincode-for-operators.md)
-
+* [编写第一个应用](fabric/first-app.md)
+* [Hyperledger Fabric Java SDK](fabric/java-sdk.md)
