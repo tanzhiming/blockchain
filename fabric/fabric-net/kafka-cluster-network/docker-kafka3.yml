@@ -1,0 +1,29 @@
+version: '2'
+
+services:
+
+  kafka3:
+    container_name: kafka3
+    hostname: kafka3
+    image: hyperledger/fabric-kafka
+    restart: always
+    environment:
+      - KAFKA_BROKER_ID=3
+      - KAFKA_MIN_INSYNC_REPLICAS=2
+      - KAFKA_DEFAULT_REPLICATION_FACTOR=3
+      - KAFKA_ZOOKEEPER_CONNECT=zookeeper1:2181,zookeeper2:2181,zookeeper3:2181
+      - KAFKA_MESSAGE_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
+      - KAFKA_REPLICA_FETCH_MAX_BYTES=103809024 # 99 * 1024 * 1024 B
+      - KAFKA_UNCLEAN_LEADER_ELECTION_ENABLE=false
+      - KAFKA_LOG_RETENTION_MS=-1
+      - KAFKA_HEAP_OPTS=-Xmx256M -Xms128M
+    ports:
+      - "9092:9092"
+    extra_hosts:
+     - "zookeeper1:192.168.0.51"
+     - "zookeeper2:192.168.0.52"
+     - "zookeeper3:192.168.0.53"
+     - "kafka1:192.168.0.61"
+     - "kafka2:192.168.0.62"
+     - "kafka3:192.168.0.63"
+     - "kafka4:192.168.0.64"
