@@ -80,10 +80,10 @@ Orderer: &OrdererDefaults
 
     Kafka:
         Brokers:
-            - kafka1.example.com:9092
-            - kafka2.example.com:9092
-            - kafka3.example.com:9092
-            - kafka4.example.com:9092
+            - 192.168.0.61:9092
+            - 192.168.0.62:9092
+            - 192.168.0.63:9092
+            - 192.168.0.64:9092
     Organizations:
 
 

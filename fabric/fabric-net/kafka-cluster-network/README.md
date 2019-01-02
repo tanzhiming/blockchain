@@ -42,6 +42,64 @@
 
 `docker exec -it cli bash`进入客户端
 
-```shell
 
+### peer0.org1.example.com
+
+创建通道
+
+```shell
+peer channel create -o orderer0.example.com:7050 -c mychannel -t 50s -f ./channel-artifacts/mychannel.tx
 ```
+
+加入通道
+
+```shell
+peer channel join -b mychannel.block
+```
+
+安装合约
+
+```shell
+peer chaincode install -n mycc -p github.com/chaincode/chaincode_example02/go/ -v 1.0
+```
+
+合约实例化
+
+```shell
+peer chaincode instantiate -o orderer0.example.com:7050 -C mychannel -n mycc -c '{"Args":["init", "A", "10", "B", "10"]}' -P "OR ('Org1MSP.member', 'Org2MSP.member')" -v 1.0
+```
+
+合约查询
+
+```shell
+peer chaincode query -C mychannel -n mycc -c '{"Args": ["query", "A"]}'
+```
+
+### foo27.org2.example.com
+
+将`peer0.org1.example.com`节点的`mychannel.block`复制到其客户端peer目录下
+
+进入客户端
+
+加入通道
+
+```shell
+peer channel join -b mychannel.block
+```
+
+安装合约
+
+```shell
+peer chaincode install -n mycc -p github.com/chaincode/chaincode_example02/go/ -v 1.0
+```
+
+查询合约
+
+```shell
+peer chaincode query -C mychannel -n mycc -c '{"Args": ["query", "A"]}'
+```
+
+
+### bar.org2.example.com
+
+同`foo27.org2.example.com`

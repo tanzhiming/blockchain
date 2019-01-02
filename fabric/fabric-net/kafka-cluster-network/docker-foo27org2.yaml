@@ -28,7 +28,7 @@ services:
       - CORE_LEDGER_STATE_COUCHDBCONFIG_PASSWORD=123456
 
       - CORE_PEER_ID=foo27.org2.example.com
-      - CORE_PEER_NETWORKID=${COMPOSE_PROJECT_NAME}
+      - CORE_PEER_NETWORKID=kafka-cluster-network
       - CORE_PEER_ADDRESS=foo27.org2.example.com:7051
       - CORE_PEER_CHAINCODEADDRESS=foo27.org2.example.com:7052
       - CORE_PEER_CHAINCODELISTENADDRESS=foo27.org2.example.com:7052
@@ -39,7 +39,7 @@ services:
       # the following setting starts chaincode containers on the same
       # bridge network as the peers
       # https://docs.docker.com/compose/networking/
-      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=${COMPOSE_PROJECT_NAME}_default
+      - CORE_VM_DOCKER_HOSTCONFIG_NETWORKMODE=kafka-cluster-network_default
       - CORE_VM_DOCKER_TLS_ENABLED=false
       # - CORE_LOGGING_LEVEL=ERROR
       - CORE_LOGGING_LEVEL=DEBUG
